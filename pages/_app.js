@@ -6,6 +6,16 @@ import nProgress from 'nprogress';
 import Layout from '../components/Layout';
 
 function MyApp({ Component, pageProps }) {
+  nProgress.configure({ showSpinner: false });
+
+  Router.events.on('routeChangeStart', () => {
+    nProgress.start();
+  });
+
+  Router.events.on('routeChangeComplete', () => {
+    nProgress.done();
+  });
+
   return (
     <>
       <Head>
